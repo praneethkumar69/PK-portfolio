@@ -31,7 +31,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-3xl overflow-hidden rounded-3xl bg-[#121212] border border-white/15 p-6 md:p-10 shadow-2xl z-10"
+          className="relative w-full max-w-3xl max-h-[88vh] overflow-y-auto rounded-3xl bg-[#121212] border border-white/15 p-6 md:p-10 shadow-2xl z-10"
         >
           {/* Top Bar */}
           <div className="flex items-center justify-between mb-6 border-b border-white/10 pb-4">

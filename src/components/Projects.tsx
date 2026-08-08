@@ -10,7 +10,7 @@ export const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="relative z-20 w-full bg-[#0a0a0a] px-6 py-20 md:px-12 lg:px-24">
+    <section id="projects" className="relative z-20 w-full bg-[#0a0a0a] px-5 sm:px-8 py-14 sm:py-20 md:px-12 lg:px-24">
       {/* Background Subtle Gradient Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-1/4 right-10 w-[400px] h-[400px] bg-purple-500/5 blur-[100px] rounded-full pointer-events-none" />
@@ -31,7 +31,7 @@ export const Projects: React.FC = () => {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               onClick={() => setSelectedProject(project)}
-              className="group relative cursor-pointer overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 p-8 backdrop-blur-xl transition-all duration-500 hover:border-cyan-500/40 hover:bg-white/[0.04] hover:shadow-2xl hover:shadow-cyan-500/10 flex flex-col justify-between"
+              className="group relative cursor-pointer overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 p-5 sm:p-8 backdrop-blur-xl transition-all duration-500 hover:border-cyan-500/40 hover:bg-white/[0.04] hover:shadow-2xl hover:shadow-cyan-500/10 flex flex-col justify-between"
             >
               {/* Subtle Ambient Hover Gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${project.accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />

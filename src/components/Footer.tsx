@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="relative z-20 w-full bg-[#050505] px-6 py-16 md:px-12 lg:px-24 border-t border-white/10">
+    <footer id="contact" className="relative z-20 w-full bg-[#050505] px-5 sm:px-8 py-14 sm:py-16 md:px-12 lg:px-24 border-t border-white/10">
       <div className="max-w-7xl mx-auto">
         {/* Main CTA Block */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-16 gap-10">
@@ -27,10 +27,10 @@ export const Footer: React.FC = () => {
             <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-3">
               Get In Touch
             </span>
-            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight mb-4">
               Let&apos;s build something extraordinary<span className="text-cyan-400">.</span>
             </h2>
-            <p className="text-base md:text-lg text-neutral-400 font-light leading-relaxed mb-6">
+            <p className="text-sm sm:text-base md:text-lg text-neutral-400 font-light leading-relaxed mb-6">
               Computer Science Undergraduate at VIT-AP | Club Advisor of Hult Prize VIT-AP Chapter. Open for software engineering roles, creative development projects, and innovative collaborations.
             </p>
 
@@ -73,8 +73,8 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Email Actions Card (Direct Mail Button + Copy Email Button) */}
-          <div className="flex flex-col items-start lg:items-end">
-            <div className="p-6 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-xl w-full sm:w-auto min-w-[320px] space-y-4">
+          <div className="flex flex-col items-start lg:items-end w-full lg:w-auto">
+            <div className="p-5 sm:p-6 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-xl w-full sm:w-auto sm:min-w-[320px] space-y-4">
               <div>
                 <span className="text-xs font-mono text-neutral-400 block mb-1">Direct Email Address</span>
                 <div className="text-sm font-mono text-white break-all">{email}</div>

@@ -45,7 +45,7 @@ export const CustomCursor: React.FC = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden">
+    <div className="hidden md:block pointer-events-none fixed inset-0 z-50 overflow-hidden">
       {/* Outer Glow Ring */}
       <motion.div
         className="fixed top-0 left-0 w-8 h-8 rounded-full border border-cyan-400/50 bg-cyan-500/10 pointer-events-none"

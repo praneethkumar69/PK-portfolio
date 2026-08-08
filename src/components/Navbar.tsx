@@ -1,17 +1,13 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Volume2, VolumeX, ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 
 export const Navbar: React.FC = () => {
-  const [isMuted, setIsMuted] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const audioContextRef = useRef<AudioContext | null>(null);
-  const synthOscillatorRef = useRef<OscillatorNode | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,64 +41,6 @@ export const Navbar: React.FC = () => {
     };
   }, []);
 
-  // Web Audio Synth Fallback if mp3 file is missing
-  const startSynthAudio = () => {
-    try {
-      if (!audioContextRef.current) {
-        const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-        audioContextRef.current = new AudioCtx();
-      }
-      const ctx = audioContextRef.current;
-      if (ctx.state === "suspended") {
-        ctx.resume();
-      }
-      if (!synthOscillatorRef.current) {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(220, ctx.currentTime);
-        gain.gain.setValueAtTime(0.05, ctx.currentTime);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start();
-        synthOscillatorRef.current = osc;
-      }
-    } catch (e) {
-      console.warn("Synth audio fallback error:", e);
-    }
-  };
-
-  const stopSynthAudio = () => {
-    if (synthOscillatorRef.current) {
-      synthOscillatorRef.current.stop();
-      synthOscillatorRef.current.disconnect();
-      synthOscillatorRef.current = null;
-    }
-  };
-
-  const toggleAudio = () => {
-    const audio = audioRef.current;
-    if (isMuted) {
-      if (audio) {
-        audio.play().then(() => {
-          setIsMuted(false);
-        }).catch(() => {
-          startSynthAudio();
-          setIsMuted(false);
-        });
-      } else {
-        startSynthAudio();
-        setIsMuted(false);
-      }
-    } else {
-      if (audio) {
-        audio.pause();
-      }
-      stopSynthAudio();
-      setIsMuted(true);
-    }
-  };
-
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
     const element = document.getElementById(id);
@@ -122,8 +60,6 @@ export const Navbar: React.FC = () => {
           : "py-6 bg-transparent"
       }`}
     >
-      <audio ref={audioRef} src="/audio/ambient.mp3" loop preload="auto" />
-
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Brand Logo */}
         <button
@@ -196,19 +132,6 @@ export const Navbar: React.FC = () => {
             {currentTime || "12:00:00 IST"}
           </div>
 
-          {/* Sound Toggle Button */}
-          <button
-            onClick={toggleAudio}
-            className="p-2.5 rounded-full bg-white/5 border border-white/10 text-neutral-400 hover:text-white hover:bg-white/10 transition-colors flex items-center justify-center"
-            title={isMuted ? "Play Audio" : "Mute Audio"}
-          >
-            {isMuted ? (
-              <VolumeX className="w-4 h-4" />
-            ) : (
-              <Volume2 className="w-4 h-4 text-cyan-400 animate-pulse" />
-            )}
-          </button>
-
           {/* Get in touch CTA */}
           <button
             onClick={() => scrollToSection("contact")}
@@ -221,7 +144,8 @@ export const Navbar: React.FC = () => {
         {/* Mobile Hamburger Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2.5 rounded-xl bg-white/5 border border-white/10 text-white"
+          className="lg:hidden p-3 rounded-xl bg-white/5 border border-white/10 text-white active:scale-95 transition-transform"
+          aria-label="Toggle Navigation Menu"
         >
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -232,53 +156,70 @@ export const Navbar: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="lg:hidden bg-[#0a0a0a] border-b border-white/10 px-6 py-6 space-y-4 font-mono text-sm"
+          exit={{ opacity: 0, y: -10 }}
+          className="lg:hidden bg-[#0a0a0a]/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 space-y-2 font-mono text-sm shadow-2xl"
         >
           <button
             onClick={() => {
               window.scrollTo({ top: 0, behavior: "smooth" });
               setMobileMenuOpen(false);
             }}
-            className="block w-full text-left py-2 text-neutral-300 hover:text-cyan-400"
+            className="w-full text-left py-3 px-4 rounded-xl text-neutral-200 hover:text-cyan-400 hover:bg-white/5 active:bg-white/10 transition-colors flex items-center justify-between"
           >
-            Hero
+            <span>Hero</span>
+            <span className="text-xs text-neutral-500">01</span>
           </button>
           <button
             onClick={() => scrollToSection("about")}
-            className="block w-full text-left py-2 text-neutral-300 hover:text-cyan-400"
+            className="w-full text-left py-3 px-4 rounded-xl text-neutral-200 hover:text-cyan-400 hover:bg-white/5 active:bg-white/10 transition-colors flex items-center justify-between"
           >
-            About
+            <span>About</span>
+            <span className="text-xs text-neutral-500">02</span>
           </button>
           <button
             onClick={() => scrollToSection("skills")}
-            className="block w-full text-left py-2 text-neutral-300 hover:text-cyan-400"
+            className="w-full text-left py-3 px-4 rounded-xl text-neutral-200 hover:text-cyan-400 hover:bg-white/5 active:bg-white/10 transition-colors flex items-center justify-between"
           >
-            Skills
+            <span>Skills</span>
+            <span className="text-xs text-neutral-500">03</span>
           </button>
           <button
             onClick={() => scrollToSection("projects")}
-            className="block w-full text-left py-2 text-neutral-300 hover:text-cyan-400"
+            className="w-full text-left py-3 px-4 rounded-xl text-neutral-200 hover:text-cyan-400 hover:bg-white/5 active:bg-white/10 transition-colors flex items-center justify-between"
           >
-            Projects
+            <span>Projects</span>
+            <span className="text-xs text-neutral-500">04</span>
           </button>
           <button
             onClick={() => scrollToSection("certifications")}
-            className="block w-full text-left py-2 text-neutral-300 hover:text-cyan-400"
+            className="w-full text-left py-3 px-4 rounded-xl text-neutral-200 hover:text-cyan-400 hover:bg-white/5 active:bg-white/10 transition-colors flex items-center justify-between"
           >
-            Certifications
+            <span>Certifications</span>
+            <span className="text-xs text-neutral-500">05</span>
           </button>
           <button
             onClick={() => scrollToSection("leadership")}
-            className="block w-full text-left py-2 text-neutral-300 hover:text-cyan-400"
+            className="w-full text-left py-3 px-4 rounded-xl text-neutral-200 hover:text-cyan-400 hover:bg-white/5 active:bg-white/10 transition-colors flex items-center justify-between"
           >
-            Leadership
+            <span>Leadership</span>
+            <span className="text-xs text-neutral-500">06</span>
           </button>
           <button
             onClick={() => scrollToSection("contact")}
-            className="block w-full text-left py-2 text-neutral-300 hover:text-cyan-400"
+            className="w-full text-left py-3 px-4 rounded-xl text-neutral-200 hover:text-cyan-400 hover:bg-white/5 active:bg-white/10 transition-colors flex items-center justify-between"
           >
-            Contact
+            <span>Contact</span>
+            <span className="text-xs text-neutral-500">07</span>
           </button>
+
+          <div className="pt-4 border-t border-white/10">
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-full bg-cyan-500 text-black font-bold hover:bg-cyan-400 active:scale-98 transition-all"
+            >
+              Contact Me <ArrowUpRight className="w-4 h-4" />
+            </button>
+          </div>
         </motion.div>
       )}
     </motion.header>

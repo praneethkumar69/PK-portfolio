@@ -47,7 +47,7 @@ export const Overlay: React.FC = () => {
             scale: scaleSection1,
             display: displaySection1,
           }}
-          className="absolute inset-0 items-center justify-start px-6 md:px-16 lg:px-24"
+          className="absolute inset-0 flex items-center justify-start px-5 sm:px-8 md:px-16 lg:px-24 py-12 md:py-0"
         >
           <div className="pointer-events-auto flex flex-col items-start max-w-xl text-left">
 
@@ -56,7 +56,7 @@ export const Overlay: React.FC = () => {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl"
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl"
             >
               Praneeth<br />
               Kumar<span className="text-cyan-400">.</span>
@@ -67,9 +67,9 @@ export const Overlay: React.FC = () => {
               style={{ y: taglineY }}
               whileHover={{ scale: 1.02, x: 5 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl mb-6 group cursor-pointer transition-all hover:border-cyan-500/40 hover:bg-white/[0.06]"
+              className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl mb-4 sm:mb-6 group cursor-pointer transition-all hover:border-cyan-500/40 hover:bg-white/[0.06]"
             >
-              <p className="text-base md:text-xl font-light text-neutral-200 leading-relaxed group-hover:text-white transition-colors">
+              <p className="text-sm sm:text-base md:text-xl font-light text-neutral-200 leading-relaxed group-hover:text-white transition-colors">
                 Computer Science Undergraduate building responsive web applications, interactive 3D experiences, and user-focused digital solutions with modern web technologies.
               </p>
             </motion.div>
@@ -79,7 +79,7 @@ export const Overlay: React.FC = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-md text-xs font-mono text-cyan-400 uppercase tracking-widest shadow-2xl"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-md text-[11px] sm:text-xs font-mono text-cyan-400 uppercase tracking-widest shadow-2xl"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
@@ -99,26 +99,26 @@ export const Overlay: React.FC = () => {
             y: ySection2,
             display: displaySection2,
           }}
-          className="absolute inset-0 items-center justify-end px-6 md:px-16 lg:px-24"
+          className="absolute inset-0 flex items-center justify-end px-5 sm:px-8 md:px-16 lg:px-24 py-12 md:py-0"
         >
           <div className="pointer-events-auto max-w-xl text-right">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono mb-4 uppercase tracking-wider ml-auto">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[10px] sm:text-xs font-mono mb-3 sm:mb-4 uppercase tracking-wider ml-auto">
               <Sparkles className="w-3.5 h-3.5" /> SOFTWARE ENGINEER • AI • UI/UX
             </div>
 
-            <h2 className="text-3xl md:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white mb-4 sm:mb-6 leading-tight">
               I turn ideas into digital products<span className="text-cyan-400">.</span>
             </h2>
 
-            <p className="text-base md:text-xl text-neutral-300 font-light leading-relaxed mb-8">
+            <p className="text-sm sm:text-base md:text-xl text-neutral-300 font-light leading-relaxed mb-6 sm:mb-8">
               I build modern web applications and interactive experiences using React, AI, UI/UX, and 3D — combining engineering with design to create products people enjoy using.
             </p>
 
             {/* Glassmorphism Stat Card */}
             <div className="flex justify-end">
-              <div className="p-5 rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-2xl text-right">
-                <div className="text-xl md:text-2xl font-bold text-cyan-400 font-mono tracking-wide">AI + 3D</div>
-                <div className="text-xs text-neutral-400 mt-1">Intelligent &amp; Interactive Experiences</div>
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-2xl text-right">
+                <div className="text-lg sm:text-xl md:text-2xl font-bold text-cyan-400 font-mono tracking-wide">AI + 3D</div>
+                <div className="text-[11px] sm:text-xs text-neutral-400 mt-1">Intelligent &amp; Interactive Experiences</div>
               </div>
             </div>
           </div>
@@ -132,18 +132,18 @@ export const Overlay: React.FC = () => {
             y: ySection3,
             display: displaySection3,
           }}
-          className="absolute inset-0 items-center justify-start px-6 md:px-16 lg:px-24"
+          className="absolute inset-0 flex items-center justify-start px-5 sm:px-8 md:px-16 lg:px-24 py-12 md:py-0"
         >
           <div className="pointer-events-auto max-w-xl text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-mono mb-4 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-500/10 border border-purple-500/20 text-purple-400 text-[10px] sm:text-xs font-mono mb-3 sm:mb-4 uppercase tracking-wider">
               <Code2 className="w-3.5 h-3.5" /> DESIGN • DEVELOPMENT • LEADERSHIP
             </div>
 
-            <h2 className="text-3xl md:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white mb-4 sm:mb-6 leading-tight">
               Building with code, creativity &amp; purpose<span className="text-purple-400">.</span>
             </h2>
 
-            <p className="text-base md:text-xl text-neutral-300 font-light leading-relaxed mb-8">
+            <p className="text-sm sm:text-base md:text-xl text-neutral-300 font-light leading-relaxed mb-6 sm:mb-8">
               I combine frontend development, UI/UX, 3D experiences, and creative problem-solving to build meaningful digital products and experiences.
             </p>
 
@@ -152,7 +152,7 @@ export const Overlay: React.FC = () => {
               {["React.js", "JavaScript", "Three.js", "UI/UX Design", "HTML & CSS", "Git & GitHub"].map((item, idx) => (
                 <span
                   key={idx}
-                  className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-neutral-200 hover:border-purple-500/50 hover:text-purple-300 transition-colors"
+                  className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/5 border border-white/10 text-neutral-200 text-[11px] sm:text-xs hover:border-purple-500/50 hover:text-purple-300 transition-colors"
                 >
                   {item}
                 </span>

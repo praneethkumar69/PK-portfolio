@@ -7,15 +7,15 @@ import { User, GraduationCap, Award, CheckCircle2, Code2, Video, Palette, Termin
 // ================= 1. ABOUT ME SECTION =================
 export const AboutMeSection: React.FC = () => {
   return (
-    <section id="about" className="relative z-20 w-full bg-[#0a0a0a] px-6 py-20 md:px-12 lg:px-24 border-t border-white/10">
+    <section id="about" className="relative z-20 w-full bg-[#0a0a0a] px-5 sm:px-8 py-14 sm:py-20 md:px-12 lg:px-24 border-t border-white/10">
       <div className="max-w-7xl mx-auto">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono mb-4 uppercase tracking-widest">
           <User className="w-3.5 h-3.5" /> About Me
         </div>
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight mb-6">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight mb-6">
           Potupu Reddy Praneeth Kumar<span className="text-cyan-400">.</span>
         </h2>
-        <p className="text-base md:text-xl text-neutral-300 font-light leading-relaxed max-w-4xl">
+        <p className="text-sm sm:text-base md:text-xl text-neutral-300 font-light leading-relaxed max-w-4xl">
           Computer Science undergraduate at VIT-AP with an interest in technology, innovation, and product development. Experienced in building digital projects, exploring emerging technologies, and collaborating with teams to turn ideas into practical solutions. Currently serving as a Club Advisor at Hult Prize VIT-AP, contributing to team development, innovation, event coordination, and strategic initiatives.
         </p>
       </div>
@@ -47,7 +47,7 @@ export const AcademicBackgroundSection: React.FC = () => {
   ];
 
   return (
-    <section id="education" className="relative z-20 w-full bg-[#0a0a0a] px-6 py-20 md:px-12 lg:px-24">
+    <section id="education" className="relative z-20 w-full bg-[#0a0a0a] px-5 sm:px-8 py-14 sm:py-20 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-2 text-xs font-mono text-purple-400 uppercase tracking-widest mb-8">
           <GraduationCap className="w-4 h-4" /> Academic Background
@@ -109,7 +109,7 @@ export const SkillsSection: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="relative z-20 w-full bg-[#0a0a0a] px-6 py-20 md:px-12 lg:px-24">
+    <section id="skills" className="relative z-20 w-full bg-[#0a0a0a] px-5 sm:px-8 py-14 sm:py-20 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase tracking-widest mb-8">
           <Sparkles className="w-4 h-4" /> Skills &amp; Technical Capabilities
@@ -124,20 +124,20 @@ export const SkillsSection: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
-                className="p-8 rounded-3xl bg-white/[0.02] border border-white/10 backdrop-blur-xl"
+                className="p-6 sm:p-8 rounded-3xl bg-white/[0.02] border border-white/10 backdrop-blur-xl"
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className={`p-3 rounded-2xl border ${group.color}`}>
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">{group.title}</h3>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">{group.title}</h3>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
                   {group.skills.map((skill, sIdx) => (
                     <span
                       key={sIdx}
-                      className="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-neutral-200 hover:border-cyan-400/50 hover:text-cyan-300 transition-colors"
+                      className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-neutral-200 hover:border-cyan-400/50 hover:text-cyan-300 transition-colors"
                     >
                       {skill}
                     </span>
@@ -183,7 +183,7 @@ export const CertificationsSection: React.FC = () => {
   ];
 
   return (
-    <section id="certifications" className="relative z-20 w-full bg-[#0a0a0a] px-6 py-20 md:px-12 lg:px-24">
+    <section id="certifications" className="relative z-20 w-full bg-[#0a0a0a] px-5 sm:px-8 py-14 sm:py-20 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-2 text-xs font-mono text-amber-400 uppercase tracking-widest mb-8">
           <Award className="w-4 h-4" /> Certifications
@@ -255,7 +255,7 @@ export const LeadershipSection: React.FC = () => {
   };
 
   return (
-    <section id="leadership" className="relative z-20 w-full bg-[#0a0a0a] px-6 py-20 md:px-12 lg:px-24 border-t border-white/5">
+    <section id="leadership" className="relative z-20 w-full bg-[#0a0a0a] px-5 sm:px-8 py-14 sm:py-20 md:px-12 lg:px-24 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-widest mb-8">
           <Users className="w-4 h-4" /> Leadership Experience
@@ -266,16 +266,16 @@ export const LeadershipSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="p-8 md:p-10 rounded-3xl bg-white/[0.02] border border-white/10 backdrop-blur-xl hover:border-emerald-500/40 transition-all shadow-2xl"
+          className="p-5 sm:p-8 md:p-10 rounded-3xl bg-white/[0.02] border border-white/10 backdrop-blur-xl hover:border-emerald-500/40 transition-all shadow-2xl"
         >
           {/* Organization Header */}
           <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10 mb-8">
             <div className="flex items-center gap-3">
               <div className="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                <Briefcase className="w-6 h-6" />
+                <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div>
-                <h3 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight">
                   {hultExperience.organization}
                 </h3>
               </div>
@@ -286,7 +286,7 @@ export const LeadershipSection: React.FC = () => {
           </div>
 
           {/* Timeline of Roles */}
-          <div className="relative pl-6 md:pl-8 space-y-6 before:absolute before:left-2 md:before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-gradient-to-b before:from-emerald-400 before:via-emerald-500/40 before:to-white/10">
+          <div className="relative pl-5 sm:pl-8 space-y-6 before:absolute before:left-2 sm:before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-gradient-to-b before:from-emerald-400 before:via-emerald-500/40 before:to-white/10">
             {hultExperience.roles.map((role, idx) => (
               <motion.div
                 key={idx}
@@ -297,10 +297,10 @@ export const LeadershipSection: React.FC = () => {
                 className="relative group"
               >
                 {/* Timeline node dot */}
-                <div className="absolute -left-[31px] md:-left-[39px] top-4 h-3.5 w-3.5 rounded-full border-2 border-emerald-400 bg-[#0a0a0a] group-hover:bg-emerald-400 group-hover:scale-125 transition-all shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
+                <div className="absolute -left-[27px] sm:-left-[39px] top-4 h-3.5 w-3.5 rounded-full border-2 border-emerald-400 bg-[#0a0a0a] group-hover:bg-emerald-400 group-hover:scale-125 transition-all shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
 
-                <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 hover:border-emerald-500/30 hover:bg-white/[0.04] transition-all">
-                  <h4 className="text-lg md:text-xl font-bold text-white mb-2">
+                <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 sm:p-5 hover:border-emerald-500/30 hover:bg-white/[0.04] transition-all">
+                  <h4 className="text-base sm:text-lg md:text-xl font-bold text-white mb-2">
                     {role.title}
                   </h4>
 
