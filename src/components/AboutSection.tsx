@@ -30,7 +30,7 @@ export const AcademicBackgroundSection: React.FC = () => {
       institution: "Vellore Institute of Technology AP",
       degree: "B.Tech in Computer Science & Engineering",
       duration: "2023 – 2027",
-      score: "CGPA: 8.04 / 10.0"
+      score: "CGPA: 8.39 / 10.0"
     },
     {
       institution: "Sri Chaitanya Junior College",
