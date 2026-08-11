@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   description: "Portfolio of Potupu Reddy Praneeth Kumar — Computer Science undergraduate at VIT-AP, Club advisor of Hult Prize VIT-AP, Senior Creative Developer specializing in Next.js 14, WebGL, Three.js 3D, and scroll-driven Canvas scrubbing.",
   keywords: ["Potupu Reddy Praneeth Kumar", "Praneeth Kumar", "VIT-AP", "Hult Prize VIT-AP", "Creative Developer", "Next.js 14", "TypeScript", "Three.js", "MindQuest 3D", "Portfolio"],
   authors: [{ name: "Potupu Reddy Praneeth Kumar" }],
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

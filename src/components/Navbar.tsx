@@ -54,11 +54,10 @@ export const Navbar: React.FC = () => {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
           ? "py-3 bg-black/70 backdrop-blur-xl border-b border-white/10"
           : "py-6 bg-transparent"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Brand Logo */}
@@ -71,7 +70,7 @@ export const Navbar: React.FC = () => {
           </div>
           <div>
             <div className="text-sm font-bold text-white tracking-tight flex items-center gap-1.5">
-              Praneeth Kumar
+              Potupu Reddy Praneeth Kumar
             </div>
             <div className="text-[11px] font-mono text-neutral-400">
               Club Advisor Hult Prize | Creative Dev
@@ -116,6 +115,12 @@ export const Navbar: React.FC = () => {
             className="px-3.5 py-1.5 text-xs font-mono text-neutral-300 hover:text-white hover:bg-white/10 rounded-full transition-colors"
           >
             Leadership
+          </button>
+          <button
+            onClick={() => scrollToSection("events")}
+            className="px-3.5 py-1.5 text-xs font-mono text-neutral-300 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+          >
+            Events
           </button>
           <button
             onClick={() => scrollToSection("contact")}
@@ -205,11 +210,18 @@ export const Navbar: React.FC = () => {
             <span className="text-xs text-neutral-500">06</span>
           </button>
           <button
+            onClick={() => scrollToSection("events")}
+            className="w-full text-left py-3 px-4 rounded-xl text-neutral-200 hover:text-cyan-400 hover:bg-white/5 active:bg-white/10 transition-colors flex items-center justify-between"
+          >
+            <span>Events</span>
+            <span className="text-xs text-neutral-500">07</span>
+          </button>
+          <button
             onClick={() => scrollToSection("contact")}
             className="w-full text-left py-3 px-4 rounded-xl text-neutral-200 hover:text-cyan-400 hover:bg-white/5 active:bg-white/10 transition-colors flex items-center justify-between"
           >
             <span>Contact</span>
-            <span className="text-xs text-neutral-500">07</span>
+            <span className="text-xs text-neutral-500">08</span>
           </button>
 
           <div className="pt-4 border-t border-white/10">

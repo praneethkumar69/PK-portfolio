@@ -33,7 +33,24 @@ export const ScrollyCanvas: React.FC<ScrollyCanvasProps> = ({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const img = imagesRef.current[frameIndex];
+    // Find target frame or fallback to closest loaded frame
+    let img = imagesRef.current[frameIndex];
+    if (!img || !img.complete) {
+      for (let i = frameIndex - 1; i >= 0; i--) {
+        if (imagesRef.current[i] && imagesRef.current[i].complete) {
+          img = imagesRef.current[i];
+          break;
+        }
+      }
+      if (!img || !img.complete) {
+        for (let i = frameIndex + 1; i < TOTAL_FRAMES; i++) {
+          if (imagesRef.current[i] && imagesRef.current[i].complete) {
+            img = imagesRef.current[i];
+            break;
+          }
+        }
+      }
+    }
     if (!img || !img.complete) return;
 
     const dpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
@@ -69,10 +86,14 @@ export const ScrollyCanvas: React.FC<ScrollyCanvasProps> = ({
     ctx.restore();
   }, []);
 
-  // Preload all WebP frame images into memory
+  // Preload frames with critical-first strategy (load frame 0-2 first for instant render)
   useEffect(() => {
     let loadedCount = 0;
     const images: HTMLImageElement[] = new Array(TOTAL_FRAMES);
+    imagesRef.current = images;
+    let initialRenderDone = false;
+
+    const CRITICAL_FRAMES = 3; // First 3 frames are critical for initial view
 
     FRAME_PATHS.forEach((path, idx) => {
       const img = new Image();
@@ -83,18 +104,22 @@ export const ScrollyCanvas: React.FC<ScrollyCanvasProps> = ({
         const percent = Math.round((loadedCount / TOTAL_FRAMES) * 100);
         if (onProgress) onProgress(percent);
 
-        if (loadedCount === TOTAL_FRAMES) {
-          imagesRef.current = images;
+        // When critical frames (or frame 0) are loaded, unblock UI immediately
+        if (!initialRenderDone && (loadedCount >= CRITICAL_FRAMES || (images[0] && images[0].complete))) {
+          initialRenderDone = true;
           setImagesPreloaded(true);
-          if (onLoaded) onLoaded();
-          // Initial render of first frame
           renderFrame(0);
+          if (onLoaded) onLoaded();
+        }
+
+        if (loadedCount === TOTAL_FRAMES) {
+          setImagesPreloaded(true);
+          renderFrame(currentFrameRef.current);
         }
       };
 
       img.onload = handleLoad;
       img.onerror = () => {
-        // Fallback for missing frames so loop doesn't stall
         handleLoad();
       };
 
@@ -103,8 +128,10 @@ export const ScrollyCanvas: React.FC<ScrollyCanvasProps> = ({
 
     return () => {
       images.forEach((img) => {
-        img.onload = null;
-        img.onerror = null;
+        if (img) {
+          img.onload = null;
+          img.onerror = null;
+        }
       });
     };
   }, [onLoaded, onProgress, renderFrame]);

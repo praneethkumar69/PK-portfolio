@@ -11,6 +11,7 @@ import {
   SkillsSection,
   CertificationsSection,
   LeadershipSection,
+  EventsHostedSection,
 } from "@/components/AboutSection";
 import { Footer } from "@/components/Footer";
 import { Preloader } from "@/components/Preloader";
@@ -26,7 +27,7 @@ export default function Home() {
   const handlePreloadComplete = () => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 400);
+    }, 150);
   };
 
   return (
@@ -63,6 +64,9 @@ export default function Home() {
 
       {/* 5th: Leadership Experience */}
       <LeadershipSection />
+
+      {/* 6th: Events I Hosted */}
+      <EventsHostedSection />
 
       {/* Get in touch / Footer */}
       <Footer />
