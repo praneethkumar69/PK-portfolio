@@ -238,7 +238,7 @@ export const LeadershipSection: React.FC = () => {
       },
       {
         title: "President",
-        duration: "Jul 2025 - Present · 1 yr 2 mos",
+        duration: "Jul 2025 - Jul 2026 · 1 yr",
         location: "Amaravati, Andhra Pradesh, India",
       },
       {
